@@ -3,32 +3,33 @@ package BOJ.Backtracking;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
 import java.util.StringTokenizer;
 
 public class Q2529 {
     static int tc;
     static char[] c;
     static boolean[] visited;
-    static int min = Integer.MAX_VALUE, max = Integer.MIN_VALUE;
+    static ArrayList<String> ans;
 
     private static void solve(int num, int cnt, String s) {
-        visited[num] = true;
 
         if (cnt == tc) { // 부등호 다 채웠을때
-            int tmp = Integer.parseInt(s);
-            min = Math.min(min, tmp);
-            max = Math.max(max, tmp);
+            ans.add(s);
             return;
         }
-        for (int i = 1; i < 10; i++) {
+        for (int i = 0; i < 10; i++) {
             if (!visited[i]) {
                 if (c[cnt] == '<') {
-                    if (num < i)
-                        solve(i, cnt + 1, s + i);
+                    if (num >= i) continue;
                 } else if (c[cnt] == '>') {
-                    if (num > i)
-                        solve(i, cnt + 1, s + i);
+                    if (num <= i) continue;
                 }
+                visited[i] = true;
+                solve(i, cnt + 1, s + i);
+                visited[i] = false;
             }
         }
     }
@@ -39,6 +40,7 @@ public class Q2529 {
         tc = Integer.parseInt(br.readLine());
         c = new char[tc];
         visited = new boolean[10];
+        ans = new ArrayList<String>();
 
         StringTokenizer st = new StringTokenizer(br.readLine());
         for (int i = 0; i < tc; i++) {
@@ -49,12 +51,9 @@ public class Q2529 {
         for (int i = 0; i < 10; i++) {
             visited[i] = true;
             solve(i, 0, i+"");
+            visited[i] = false;
         }
 
-        System.out.println(min);
-        System.out.println(max);
-
+        System.out.println(ans.get(ans.size()-1) + "\n" + ans.get(0));
     }
-
-
 }
