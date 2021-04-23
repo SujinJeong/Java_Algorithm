@@ -30,7 +30,8 @@ public class Q16202 {
         int pb = findParent(b);
 
         if (pa != pb) {
-            parent[pa] = pb;
+            if (pa < pb) parent[pb] = pa;
+            else parent[pa] = pb;
             return true;
         }
         return false;
@@ -65,15 +66,17 @@ public class Q16202 {
             boolean flag = false;
             // 연결되지 않을 간선들빼고 돌면서 mst 만들어보기
             for (int j = cnt; j < m; j++) {
-                // 모두 연결완료
-                if (adj_cnt == n) {
-                    // mst임
-                    flag = true;
-                }
 
                 if (union(arr[j].s, arr[j].e)) { // 연결되있으면 계속 진행
                    adj_cnt++;
                    adj_sum += arr[j].cost;
+                }
+
+                // 모두 연결완료
+                if (adj_cnt == n) {
+                    // mst임
+                    flag = true;
+                    break;
                 }
             }
 
