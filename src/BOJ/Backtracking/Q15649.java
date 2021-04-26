@@ -12,7 +12,7 @@ public class Q15649 {
 	static int n, m;
 	static int[] num;
 
-	public static void Comb(int cnt, int[] selected, boolean[] visited) {
+	public static void Perm(int cnt, int[] selected, boolean[] visited) {
 
 		if (cnt == m) {
 
@@ -27,7 +27,7 @@ public class Q15649 {
 			if (!visited[i]) {
 				visited[i] = true;
 				selected[cnt] = num[i];
-				Comb(cnt + 1, selected, visited);
+				Perm(cnt + 1, selected, visited);
 				visited[i] = false;
 			}
 		}
@@ -43,7 +43,7 @@ public class Q15649 {
 		for (int i = 1; i <= n; i++) {
 			num[i - 1] = i;
 		}
-		Comb(0, new int[m], new boolean[n]);
+		Perm(0, new int[m], new boolean[n]);
 	}
 
 }

@@ -14,7 +14,7 @@ public class Q15651 {
 	static int[] num;
 	static StringBuilder sb;
 	
-	public static void Comb(int cnt, int[] selected) {
+	public static void Perm(int cnt, int[] selected) {
 
 		if (cnt == m) {
 			for (int cur : selected)
@@ -26,7 +26,7 @@ public class Q15651 {
 		// cnt는 총 몇개 뽑았는지, i는 중복제거 하기 위해 시작 인덱스 조정
 		for (int i = 0; i < num.length; i++) {
 			selected[cnt] = num[i];
-			Comb(cnt + 1, selected);
+			Perm(cnt + 1, selected);
 		}
 	}
 
@@ -42,7 +42,7 @@ public class Q15651 {
 		for (int i = 1; i <= n; i++) {
 			num[i - 1] = i;
 		}
-		Comb(0, new int[m]);
+		Perm(0, new int[m]);
 		
 		System.out.println(sb);
 	}
