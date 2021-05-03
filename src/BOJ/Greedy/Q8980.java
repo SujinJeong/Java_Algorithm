@@ -7,28 +7,28 @@ import java.io.OutputStreamWriter;
 import java.util.Arrays;
 import java.util.StringTokenizer;
 
-class Delivery implements Comparable<Delivery> {
-	int start; // 보내는 마을
-	int end; // 받는 마을
-	int boxNum; // 박스의 개수
-
-	Delivery(int start, int end, int boxNum) {
-		this.start = start;
-		this.end = end;
-		this.boxNum = boxNum;
-	}
-
-	
-	@Override
-	public int compareTo(Delivery arg0) {
-		if (end == arg0.end) {
-			return start - arg0.start;
-		}
-		return end - arg0.end;
-	}
-}
-
 public class Q8980 {
+
+	static class Delivery implements Comparable<Delivery> {
+		int start; // 보내는 마을
+		int end; // 받는 마을
+		int boxNum; // 박스의 개수
+
+		Delivery(int start, int end, int boxNum) {
+			this.start = start;
+			this.end = end;
+			this.boxNum = boxNum;
+		}
+
+
+		@Override
+		public int compareTo(Delivery arg0) {
+			if (end == arg0.end) {
+				return start - arg0.start;
+			}
+			return end - arg0.end;
+		}
+	}
 
 	public static void main(String[] args) throws Exception {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
