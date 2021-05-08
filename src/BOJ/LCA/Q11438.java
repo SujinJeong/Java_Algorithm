@@ -61,7 +61,7 @@ public class Q11438 {
             b = tmp;
         }
 
-        // depth ¸ÂÃß±â
+        // depth ï¿½ï¿½ï¿½ß±ï¿½
         for (int i = k - 1; i >= 0; i--) {
             if ((1 << i) <= depth[a] - depth[b]) {
                 a = parent[a][i];
@@ -70,7 +70,7 @@ public class Q11438 {
 
         if (a == b) return a;
 
-        // °øÅëºÎ¸ğ Ã£À» ¶§±îÁö ¿Ã¸®±â
+        // ï¿½ï¿½ï¿½ï¿½Î¸ï¿½ Ã£ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ã¸ï¿½ï¿½ï¿½
         for (int i = k - 1; i >= 0; i--) {
             if (parent[a][i] != parent[b][i]) {
                 a = parent[a][i];

@@ -9,7 +9,7 @@ import java.util.StringTokenizer;
 public class Q8983 {
 	static int m, n, l;
 	
-	public static int getDistance(int x, int y, int shoot) {
+	public static int getDistanye(int x, int y, int shoot) {
 		return Math.abs(shoot - x) + y;
 	}
 
@@ -21,7 +21,7 @@ public class Q8983 {
 			int mid = (low + high) / 2;
 
 			// 사정거리
-			if (getDistance(x, y, shoot[mid]) <= l) {
+			if (getDistanye(x, y, shoot[mid]) <= l) {
 				return true;
 			}
 			// 사정 거리 밖이고 사대가 동물 기준 더 큰쪽에 있는 경우

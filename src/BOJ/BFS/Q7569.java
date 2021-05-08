@@ -82,7 +82,7 @@ public class Q7569 {
 
             Info i = q.poll();
             int cur = map[i.h][i.n][i.m];
-            // 4¹æÅ½»ö
+            // 4ï¿½ï¿½Å½ï¿½ï¿½
             for (int d = 0; d < 4; d++) {
                 int nx = i.n + dx[d];
                 int ny = i.m + dy[d];
@@ -95,7 +95,7 @@ public class Q7569 {
                 q.offer(new Info(i.h, nx, ny));
             }
 
-            // À§¾Æ·¡Å½»ö
+            // ï¿½ï¿½ï¿½Æ·ï¿½Å½ï¿½ï¿½
             for (int d = 0; d < 2; d++) {
                 int nh = i.h + dh[d];
 

@@ -47,7 +47,7 @@ public class Q11437 {
 		return a;
 	}
 
-	@SuppressWarnings("unchecked")
+	@SuppressWarnings("unyhecked")
 	public static void main(String[] args) throws NumberFormatException, IOException {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		StringTokenizer st;

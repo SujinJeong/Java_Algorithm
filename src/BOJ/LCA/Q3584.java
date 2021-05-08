@@ -5,7 +5,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 
 /*
-LCA(Lowest Common Ancestor) 푸는 방법
+LCA(Lowest Common Anyestor) 푸는 방법
 1. 아래에서 위로 올라가는 방식
 2. 두 정점의 높이를 맞춰준다(깊이를 맞춰줌)
 3. 하나씩 똑같이 올라가면서 같은 정점(=공통 조상)나올때까지 반복

@@ -9,8 +9,8 @@ import java.util.Queue;
 import java.util.StringTokenizer;
 
 /*
-Ç®ÀÌ½Ã°£: 2½Ã°£
-µ¹¸®±â ÀÎµ¦½º ¿¬½À ÇÊ¿ä!!!!!!!!!
+Ç®ï¿½Ì½Ã°ï¿½: 2ï¿½Ã°ï¿½
+ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Îµï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ê¿ï¿½!!!!!!!!!
  */
 public class Q17144 {
     static int r, c, t;
@@ -52,11 +52,11 @@ public class Q17144 {
         }
 
         while (t--> 0) {
-            // ¹Ì¼¼¸ÕÁö Ã£±â
+            // ï¿½Ì¼ï¿½ï¿½ï¿½ï¿½ï¿½ Ã£ï¿½ï¿½
             findDust();
-            // ¹Ì¼¼¸ÕÁö ÀüÆÄ
+            // ï¿½Ì¼ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
             bfs();
-            // °ø±âÃ»Á¤
+            // ï¿½ï¿½ï¿½ï¿½Ã»ï¿½ï¿½
             clear(air);
 
 //            for (int i = 0; i < r; i++) {
@@ -66,7 +66,7 @@ public class Q17144 {
 //            }
         }
 
-        // ³²Àº ¹Ì¼¼¸ÕÁö °è»ê
+        // ï¿½ï¿½ï¿½ï¿½ ï¿½Ì¼ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½
         System.out.println(calc());
 
     }
@@ -91,7 +91,7 @@ public class Q17144 {
             }
         }
     }
-    // À§¿¡ ÁÂÇ¥-air ¹Ý½Ã°è ¹æÇâ, ¾Æ·¡ ÁÂÇ¥-air.x+1 ½Ã°è¹æÇâ
+    // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Ç¥-air ï¿½Ý½Ã°ï¿½ ï¿½ï¿½ï¿½ï¿½, ï¿½Æ·ï¿½ ï¿½ï¿½Ç¥-air.x+1 ï¿½Ã°ï¿½ï¿½ï¿½ï¿½
     private static void clear(ArrayList<Info> air) {
         Info up = air.get(0);
         // System.out.println(air.get(0).x + " " + air.get(1).y);
@@ -99,18 +99,18 @@ public class Q17144 {
         int rmax = r-1;
         int cmax = c-1;
         
-        // ¹Ý½Ã°è¹æÇâ
-        // ¿ÞÂÊ À§ °¡Àå ÀÎµ¦½º ÀÛÀº ÂÊÀ» »©±â
+        // ï¿½Ý½Ã°ï¿½ï¿½ï¿½ï¿½
+        // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Îµï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
         int tmp = map[0][up.y];
-        // ÁÂ
+        // ï¿½ï¿½
         for (int i = up.y; i < cmax; i++) {
             map[0][i] = map[0][i+1];
         }
-        // »ó
+        // ï¿½ï¿½
         for (int i = 0; i < up.x; i++) {
             map[i][cmax] = map[i+1][cmax];
         }
-        // ¿ì
+        // ï¿½ï¿½
         for (int i = cmax; i > up.y; i--) {
             if (map[up.x][i-1] == -1) {
                 map[up.x][i] = 0;
@@ -118,7 +118,7 @@ public class Q17144 {
             }
             map[up.x][i] = map[up.x][i-1];
         }
-        // ÇÏ
+        // ï¿½ï¿½
         for (int i = up.x; i > 0; i--) {
             if (map[i][0] == -1) {
                 continue;
@@ -127,13 +127,13 @@ public class Q17144 {
         }
         map[1][up.y] = tmp;
 
-        // ½Ã°è¹æÇâ
+        // ï¿½Ã°ï¿½ï¿½ï¿½ï¿½
         tmp = map[rmax][cmax];
-        // ÇÏ
+        // ï¿½ï¿½
         for (int i = rmax; i > down.x; i--) {
             map[i][cmax] = map[i-1][cmax];
         }
-        // ¿ì
+        // ï¿½ï¿½
         for (int i = cmax; i > down.y; i--) {
             if (map[down.x][i-1] == -1) {
                 map[down.x][i] = 0;
@@ -141,14 +141,14 @@ public class Q17144 {
             }
             map[down.x][i] = map[down.x][i-1];
         }
-        // »ó
+        // ï¿½ï¿½
         for (int i = down.x; i < rmax; i++) {
             if (map[i][down.y] == -1) {
                 continue;
             }
             map[i][down.y] = map[i+1][down.y];
         }
-        // ÁÂ
+        // ï¿½ï¿½
         for (int i = 0; i < cmax; i++) {
             map[rmax][i] = map[rmax][i+1];
         }

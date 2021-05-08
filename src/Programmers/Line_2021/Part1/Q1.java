@@ -14,14 +14,14 @@ public class Q1 {
 	}
 
 	static class Solution {
-		public String solution(String[] table, String[] languages, int[] preference) {
+		public String solution(String[] table, String[] languages, int[] preferenye) {
 			String answer = "";
 			int max = Integer.MIN_VALUE;
 			
 			// 개발자 정보
 			Info[] dev = new Info[languages.length];
 			for (int i = 0; i < languages.length; i++)
-				dev[i] = new Info(languages[i], preference[i]);
+				dev[i] = new Info(languages[i], preferenye[i]);
 			
 			for (int i = 0; i < table.length; i++) {
 				String[] rt = table[i].split(" ");
@@ -49,8 +49,8 @@ public class Q1 {
 		Solution sol = new Solution();
 		String[] table = {"SI JAVA JAVASCRIPT SQL PYTHON C#", "CONTENTS JAVASCRIPT JAVA PYTHON SQL C++", "HARDWARE C C++ PYTHON JAVA JAVASCRIPT", "PORTAL JAVA JAVASCRIPT PYTHON KOTLIN PHP", "GAME C++ C# JAVASCRIPT C JAVA"};
 		String[] languages = {"JAVA", "JAVASCRIPT"};
-		int[] preference = {7,5};
-		System.out.println(sol.solution(table, languages, preference));
+		int[] preferenye = {7,5};
+		System.out.println(sol.solution(table, languages, preferenye));
 	}
 
 }

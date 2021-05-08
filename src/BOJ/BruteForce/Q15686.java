@@ -21,7 +21,7 @@ public class Q15686 {
 		}
 	}
 
-	// Ä¡Å²Áýµé Áß M°³ »Ì±â
+	// Ä¡Å²ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ Mï¿½ï¿½ ï¿½Ì±ï¿½
 	public static void Combination(ArrayList<Building> arr, boolean[] visited, int start, int n, int r) {
 		if (r == 0) {
 			int total = 0;
@@ -29,15 +29,15 @@ public class Q15686 {
 			for (int j = 0; j < house.size(); j++) {
 				int val = Integer.MAX_VALUE;
 				for (int i = 0; i < chicken.size(); i++) {
-					// ¹æ¹®ÇÑ°æ¿ì = M°³¸¸ °É¸²
+					// ï¿½æ¹®ï¿½Ñ°ï¿½ï¿½ = Mï¿½ï¿½ï¿½ï¿½ ï¿½É¸ï¿½
 					if (visited[i])
 						val = Math.min(val,
 								Math.abs(house.get(j).x - chicken.get(i).x) + Math.abs(house.get(j).y - chicken.get(i).y));
 				}
-				// Áý¿¡¼­ ÇØ´ç Ä¡Å²Áý±îÁö Ä¡Å²°Å¸® ±¸ÇÏ¸é total¿¡ ´õÇÏ±â
+				// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ø´ï¿½ Ä¡Å²ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ Ä¡Å²ï¿½Å¸ï¿½ ï¿½ï¿½ï¿½Ï¸ï¿½ totalï¿½ï¿½ ï¿½ï¿½ï¿½Ï±ï¿½
 				total += val;
 			}
-			// Ä¡Å²°Å¸®ÀÇ ÇÕÀÌ ÀÌÀü M°³ ¼±ÅÃº¸´Ù ÀÛÀº °æ¿ì °»½Å
+			// Ä¡Å²ï¿½Å¸ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ Mï¿½ï¿½ ï¿½ï¿½ï¿½Ãºï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 			min = Math.min(min, total);
 			return;
 		}
@@ -66,9 +66,9 @@ public class Q15686 {
 			String[] tmp = br.readLine().split(" ");
 			for (int j = 0; j < N; j++) {
 				map[i][j] = Integer.parseInt(tmp[j]);
-				if (map[i][j] == 1) // Áý
+				if (map[i][j] == 1) // ï¿½ï¿½
 					house.add(new Building(i, j));
-				else if (map[i][j] == 2) // Ä¡Å²Áý
+				else if (map[i][j] == 2) // Ä¡Å²ï¿½ï¿½
 					chicken.add(new Building(i, j));
 			}
 		}

@@ -14,7 +14,7 @@ import java.util.StringTokenizer;
 public class Q11779 {
 	static int from,to, cnt = 0;
 	static int N, M;
-	static int[] parent, distance;
+	static int[] parent, distanye;
 	static ArrayList<Edge>[] graph;
 	
 	static class Edge implements Comparable<Edge>{
@@ -34,20 +34,20 @@ public class Q11779 {
 	        PriorityQueue<Edge> pq = new PriorityQueue<Edge>();
 	        
 	        pq.offer(new Edge(from, 0));
-	        distance[from] = 0;
+	        distanye[from] = 0;
 	        
 	        while(!pq.isEmpty()) {
 	            Edge edge = pq.poll();
 
-	            if(distance[edge.vertex] < edge.weight) continue;
+	            if(distanye[edge.vertex] < edge.weight) continue;
 	            
 	            for (int i = 0; i < graph[edge.vertex].size(); i++) {
 	                Edge tmp = graph[edge.vertex].get(i);
 	                
 	                // 최소값 갱신
-	                if(distance[tmp.vertex] > edge.weight + tmp.weight) {
-	                    distance[tmp.vertex] = edge.weight + tmp.weight;
-	                    pq.add(new Edge(tmp.vertex, distance[tmp.vertex]));
+	                if(distanye[tmp.vertex] > edge.weight + tmp.weight) {
+	                    distanye[tmp.vertex] = edge.weight + tmp.weight;
+	                    pq.add(new Edge(tmp.vertex, distanye[tmp.vertex]));
 	                    // 경로 정보 출력 위해 시작점 저장
 	                    parent[tmp.vertex] = edge.vertex;
 	                }
@@ -98,9 +98,9 @@ public class Q11779 {
         M = Integer.parseInt(br.readLine());
         
         // 최소 거리가 계속 갱신되는 배열
-        distance = new int[N + 1];
+        distanye = new int[N + 1];
         // INF 값으로 초기값 채우기
-        Arrays.fill(distance, Integer.MAX_VALUE);
+        Arrays.fill(distanye, Integer.MAX_VALUE);
         // 그래프 정보
         graph = new ArrayList[N + 1];
         // 경로 역추적을 위한 배열
@@ -130,7 +130,7 @@ public class Q11779 {
         while (!st.empty()) {
         	sb.append(st.pop() + " ");
         }
-        bw.write(distance[to]+"\n");
+        bw.write(distanye[to]+"\n");
         bw.write(Integer.valueOf(cnt)+"\n");
         bw.write(sb.toString());
         bw.flush();

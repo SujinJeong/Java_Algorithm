@@ -31,9 +31,9 @@ public class Q14503 {
 		int clean_cnt = 0;
 		int dir_cnt = 0;
 		int nx, ny;
-		boolean canClean = true;
+		boolean canylean = true;
 
-		while (canClean) { // 1번
+		while (canylean) { // 1번
 			if (map[x][y] == 0) { // 청소가능
 				map[x][y] = -1;
 				clean_cnt++;
@@ -48,7 +48,7 @@ public class Q14503 {
 					ny = y - dy[d];
 
 					if (map[nx][ny] == 1) { // 후진했으나 뒷칸이 벽이면 후진할수없음 d. 작동끝
-						canClean = false;
+						canylean = false;
 						break;
 					} else { // 한칸 후진 c
 						x = nx;

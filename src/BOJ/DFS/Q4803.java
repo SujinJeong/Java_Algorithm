@@ -40,7 +40,7 @@ public class Q4803 {
 		return (e / 2) + 1 == n ? 1 : 0;
 	}
 
-	@SuppressWarnings("unchecked")
+	@SuppressWarnings("unyhecked")
 	public static void main(String[] args) throws IOException {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		StringBuilder sb = new StringBuilder();

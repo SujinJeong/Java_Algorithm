@@ -6,7 +6,7 @@ import java.io.InputStreamReader;
 import java.util.StringTokenizer;
 
 public class Q2961 {
-	static int[] arr; // »ÌÈù ¼öÀÇ ÀÎµ¦½º ÀúÀå, visited¿Í ºñ½ÁÇÑ °³³ä
+	static int[] arr; // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Îµï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½, visitedï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 	static int[] S, B;
 	static int N;
 	static int min = Integer.MAX_VALUE;
@@ -15,11 +15,11 @@ public class Q2961 {
 	    if (cnt == r) {
 	    	int sum = 0; int multi = 1;
 	    	for (int i = 0 ; i < arr.length; i++) {
-	    		// ÇöÀç »ÌÀÎ ÀÎµ¦½ºµéÀÌ ´ã±ä arr ÀÌ¿ëÇØ µ¡¼À, °ö¼À
+	    		// ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Îµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ arr ï¿½Ì¿ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½, ï¿½ï¿½ï¿½ï¿½
 	    		multi *= S[arr[i]];
 	    		sum += B[arr[i]];
 	    	}
-	    	// ½Å¸À°ú ¾´¸ÀÀÇ ÃÖ¼Ò°ª ±¸ÇÏ±â
+	    	// ï¿½Å¸ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ö¼Ò°ï¿½ ï¿½ï¿½ï¿½Ï±ï¿½
 	    	min = Math.min(min, Math.abs(multi-sum));
 	    	return;
 	    }
@@ -35,8 +35,8 @@ public class Q2961 {
 		StringTokenizer st;
 		
 		N = Integer.parseInt(br.readLine());
-		S = new int[N]; // ½Å¸À
-		B = new int[N]; // ¾´¸À
+		S = new int[N]; // ï¿½Å¸ï¿½
+		B = new int[N]; // ï¿½ï¿½ï¿½ï¿½
 		
 		// input
 		for (int i = 0; i < N; i++) {
@@ -45,9 +45,9 @@ public class Q2961 {
 			B[i] = Integer.parseInt(st.nextToken());
 		}
 		
-		for (int r = 1; r <= N; r++) { // nCr¿¡¼­ r°ª
-			arr = new int[r]; // »Ì´Â ¼ö¸¸Å­ ÀÎµ¦½º ´ã¾ÆÁÖ±â À§ÇØ ¹è¿­»ý¼º
-			Comb(0, 0, r); // CombÇÔ¼ö´Ô r°³¸¸Å­ »Ì°í½Í¾î¿ä
+		for (int r = 1; r <= N; r++) { // nyrï¿½ï¿½ï¿½ï¿½ rï¿½ï¿½
+			arr = new int[r]; // ï¿½Ì´ï¿½ ï¿½ï¿½ï¿½ï¿½Å­ ï¿½Îµï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Ö±ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½è¿­ï¿½ï¿½ï¿½ï¿½
+			Comb(0, 0, r); // Combï¿½Ô¼ï¿½ï¿½ï¿½ rï¿½ï¿½ï¿½ï¿½Å­ ï¿½Ì°ï¿½Í¾ï¿½ï¿½
 		}
 		System.out.println(min);
 	}

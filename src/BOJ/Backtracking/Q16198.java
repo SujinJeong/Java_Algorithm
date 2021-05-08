@@ -22,7 +22,7 @@ public class Q16198 {
                 int num = arr.get(i-1) * arr.get(i+1);
                 arr.remove(i);
                 dfs(arr, sum + num);
-                arr.add(i, temp); // µÇµ¹·Á³õ±â
+                arr.add(i, temp); // ï¿½Çµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
             }
         }
 

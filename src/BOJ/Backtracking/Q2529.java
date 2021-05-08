@@ -16,7 +16,7 @@ public class Q2529 {
 
     private static void solve(int num, int cnt, String s) {
 
-        if (cnt == tc) { // ºÎµîÈ£ ´Ù Ã¤¿üÀ»¶§
+        if (cnt == tc) { // ï¿½Îµï¿½È£ ï¿½ï¿½ Ã¤ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
             ans.add(s);
             return;
         }
@@ -47,7 +47,7 @@ public class Q2529 {
             c[i] = st.nextToken().charAt(0);
         }
 
-        // Ã¹¹øÂ°¼ýÀÚ
+        // Ã¹ï¿½ï¿½Â°ï¿½ï¿½ï¿½ï¿½
         for (int i = 0; i < 10; i++) {
             visited[i] = true;
             solve(i, 0, i+"");

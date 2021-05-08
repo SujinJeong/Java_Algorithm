@@ -26,11 +26,11 @@ public class Q17836 {
 	static int[] dy = {1, 0, -1, 0};
 	static int[] dx = {0, 1, 0, -1};
 	
-	public static class Prince {
+	public static class Prinye {
 		int x, y, time;
 		boolean sword;
 
-		public Prince(int x, int y, int time, boolean sword) {
+		public Prinye(int x, int y, int time, boolean sword) {
 			super();
 			this.x = x;
 			this.y = y;
@@ -41,12 +41,12 @@ public class Q17836 {
 		
 	}
 	public static void bfs() {
-		Queue<Prince> q = new LinkedList<Prince>();
+		Queue<Prinye> q = new LinkedList<Prinye>();
 		visited[0][0][0] = true;
-		q.offer(new Prince(0, 0, 0, false));
+		q.offer(new Prinye(0, 0, 0, false));
 		
 		while (!q.isEmpty()) {
-			Prince p = q.poll();
+			Prinye p = q.poll();
 			
 			if (p.x == n-1 && p.y == m-1) {
 				rslt = p.time;
@@ -66,7 +66,7 @@ public class Q17836 {
 							// 벽, 방문 둘다 고려
 							if (!visited[0][nx][ny] && map[nx][ny] != 1) {
 								visited[0][nx][ny] = true;
-								q.offer(new Prince(nx, ny, p.time+1, p.sword));
+								q.offer(new Prinye(nx, ny, p.time+1, p.sword));
 							}
 					}
 					// sword 있을때
@@ -74,7 +74,7 @@ public class Q17836 {
 						// 검 있으므로 방문만 고려
 						if (!visited[1][nx][ny]) {
 							visited[1][nx][ny] = true;
-							q.offer(new Prince(nx, ny, p.time+1, p.sword));
+							q.offer(new Prinye(nx, ny, p.time+1, p.sword));
 						}
 					}
 				}
