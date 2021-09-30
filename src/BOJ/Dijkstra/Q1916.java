@@ -27,22 +27,29 @@ public class Q1916 {
 
     private static void dijstra(int start) {
         PriorityQueue<Info> pq = new PriorityQueue<>();
+
+        // 정점 사이의 간선이 2개 이상 있을 수 있으므로 처리했는지 확인
+        boolean[] visited = new boolean[n+1];
+        
         pq.offer(new Info(start, 0));
         dist[start] = 0;
 
         while (!pq.isEmpty()) {
             Info cur = pq.poll();
 
-            for (int i = 0; i < adj[cur.des].size(); i++) {
-                Info next = adj[cur.des].get(i);
+            // 방문하지 않았던 정점일 경우에만 재방문
+            if (!visited[cur.des]) {
+                visited[cur.des] = true;
 
-                // ���� ���� �̹� dist�� �ִ� ������ ũ�� �� �� �ʿ� ����
-                if (cur.cost > dist[next.des]) continue;
-                
-                // ���� ����� �ּҰ� > ��������� �ּҰ� + �����忡�� ��������� ��
-                if (dist[next.des] > dist[cur.des] + next.cost) {
-                    dist[next.des] = dist[cur.des] + next.cost;
-                    pq.offer(new Info(next.des, dist[next.des]));
+                for (int i = 0; i < adj[cur.des].size(); i++) {
+                    Info next = adj[cur.des].get(i);
+
+                    if (cur.cost >= dist[next.des]) continue;
+
+                    if (dist[next.des] > dist[cur.des] + next.cost) {
+                        dist[next.des] = dist[cur.des] + next.cost;
+                        pq.offer(new Info(next.des, dist[next.des]));
+                    }
                 }
             }
         }
