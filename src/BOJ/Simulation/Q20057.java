@@ -4,7 +4,10 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.StringTokenizer;
-
+/*
+ * https://alwaysbemoon.tistory.com/225
+ * 4방향 회전에 대해 로직을 생각하지 못해 방법ㅂ 참
+ */
 public class Q20057 {
 	static int n;
 	static int[][] map;
