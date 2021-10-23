@@ -4,6 +4,9 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
+import java.util.LinkedList;
+import java.util.PriorityQueue;
+import java.util.Queue;
 import java.util.StringTokenizer;
 
 /*
@@ -18,88 +21,130 @@ import java.util.StringTokenizer;
  */
 public class Q16236 {
 	static Pos shark;
-	static ArrayList<Pos> fish;
+	static PriorityQueue<Pos> fish;
 	static int[][] map;
-	
-	public static class Pos {
-		int x, y, size;
+	static int[] dx = { 1, 0, -1, 0 };
+	static int[] dy = { 0, 1, 0, -1 };
+	static int n, cnt, time, size = 2;
+	// cnt : 먹은 물고기 수, time : 총 걸린시간, size: 상어 크
 
-		public Pos(int x, int y, int size) {
+	public static class Pos implements Comparable<Pos> {
+		int x, y, dist;
+
+		public Pos(int x, int y, int dist) {
 			super();
 			this.x = x;
 			this.y = y;
-			this.size = size;
+			this.dist = dist;
 		}
-		
+
+		@Override
+		public int compareTo(Pos o) {
+			if (this.dist == o.dist) {
+				if (this.x == o.x) {
+					return this.y - o.y;
+				} else {
+					return this.x - o.x;
+				}
+			} else {
+				return this.dist - o.dist;
+			}
+		}
+
 	}
-	
-	public static int getDist(int x1, int x2, int y1, int y2) {
-		return Math.abs(x1-x2) + Math.abs(y1-y2);
-	}
+
 	public static void solve() {
-		int time = 0;
-		int min = Integer.MAX_VALUE;
-		
-		while (fish.size() != 0) {
-			time++;
-			
-			if (fish.size() == 1) {
-				shark = fish.get(0);
-				fish.remove(0);
+
+		while (true) {
+			// 상어위치부터 탐색
+			if (bfs(shark.x, shark.y)) {
+
+				// 현재 먹을 물고
+				Pos cur = fish.poll();
+
+				// 물고기 먹기
+				cnt++;
+				time += cur.dist;
+				map[cur.x][cur.y] = 0; // 먹은 물고기 빈칸으로
+
+				if (cnt == size) { // 자신의 크기와 같은 수의 물고기 먹을때마다 크기 증가
+					size++;
+					cnt = 0;
+				}
+
+				
+				shark = new Pos(cur.x, cur.y, 0); // 상어 위치 재설정
+
 			}
-			else {
-				//  가까운 거리에 있는거 먹기
-				Pos nextFish = fish.get(0);
-				
-				// min dist 구하기
-				for (int i = 0; i < fish.size(); i++) {
-					if (fish.get(i).size < shark.size)
-						min = Math.min(getDist(fish.get(i).x, shark.x, fish.get(i).y, shark.y), min);
-				}
-				
-				// 뭐 먹을지 고르기
-				for (int i = 0; i < fish.size(); i++) {
-					// 거리가 가까운 물고기가 많다면
-					if (fish.get(i).size < shark.size && min == getDist(fish.get(i).x, shark.x, fish.get(i).y, shark.y)) {
-						if (fish.get(i).x < nextFish.x) { // 더 위에 있으면
-							nextFish = fish.get(i);
-						}
-						else if (fish.get(i).x == nextFish.x) { // 더 위가 여러마리면 가장 왼쪽
-							if (fish.get(i).y < nextFish.y) {
-								nextFish = fish.get(i);
-							}
-						}
-					}
-				}
-				
-				// 먹기
-				// 사이즈 같으면 먹진 못하고 지나가기
-				if (nextFish.size == shark.size) continue;
-				else {
-					
-				}
-			}
+			else break;
+
 		}
 	}
+
+	private static boolean bfs(int x, int y) {
+		PriorityQueue<Pos> q = new PriorityQueue<>(); // 상어 이동경로 기억
+		fish = new PriorityQueue<>(); // 이동할때마다 유효한 물고기를 담기 위한 배
+		boolean flag = false; // 먹을 물고기가 있는
+		boolean[][] visited = new boolean[n][n];
+
+		// 처음 상어 위치부터 출발
+		q.offer(shark);
+		visited[shark.x][shark.y] = true;
+
+		while (!q.isEmpty()) {
+			Pos cur = q.poll();
+
+			for (int d = 0; d < 4; d++) {
+				int nx = cur.x + dx[d];
+				int ny = cur.y + dy[d];
+
+				if (nx < 0 || nx >= n || ny < 0 || ny >= n || visited[nx][ny])
+					continue;
+				
+				// 사이즈가 같거나 0이면 지나갈 수만 있음
+				if (size == map[nx][ny] || map[nx][ny] == 0) {
+					// 상어 위치 갱신
+					q.offer(new Pos(nx, ny, cur.dist + 1));
+					visited[nx][ny] = true;
+				}
+				
+				// 먹을 수 있는 물고기 자
+				if (1 <= map[nx][ny] && map[nx][ny] < size) {
+					// 유효한 물고기 위치 담기
+					fish.add(new Pos(nx, ny, cur.dist + 1));
+					// 상어 이동
+					q.offer(new Pos(nx, ny, cur.dist + 1));
+					
+					visited[nx][ny] = true;
+					flag = true;
+				}
+
+			}
+		}
+
+		return flag;
+	}
+
 	public static void main(String[] args) throws NumberFormatException, IOException {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		StringTokenizer st;
-		int n = Integer.parseInt(br.readLine());
+		n = Integer.parseInt(br.readLine());
 		map = new int[n][n];
-		fish = new ArrayList<>();
-		
+
 		for (int i = 0; i < n; i++) {
 			st = new StringTokenizer(br.readLine());
 			for (int j = 0; j < n; j++) {
 				map[i][j] = Integer.parseInt(st.nextToken());
-				if (map[i][j] == 9) shark = new Pos(i, j, 2);
-				else if (1 <= map[i][j] && map[i][j] <= 6) fish.add(new Pos(i, j, map[i][j]));
+				if (map[i][j] == 9) {
+					shark = new Pos(i, j, 0);
+					map[i][j] = 0;
+				}
 			}
 		}
-		
+
 		solve();
-		
-		
+
+		System.out.println(time);
 	}
 
 }
