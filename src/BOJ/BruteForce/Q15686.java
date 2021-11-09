@@ -20,8 +20,6 @@ public class Q15686 {
 			this.y = y;
 		}
 	}
-
-	// ġŲ���� �� M�� �̱�
 	public static void Combination(ArrayList<Building> arr, boolean[] visited, int start, int n, int r) {
 		if (r == 0) {
 			int total = 0;
@@ -34,10 +32,8 @@ public class Q15686 {
 						val = Math.min(val,
 								Math.abs(house.get(j).x - chicken.get(i).x) + Math.abs(house.get(j).y - chicken.get(i).y));
 				}
-				// ������ �ش� ġŲ������ ġŲ�Ÿ� ���ϸ� total�� ���ϱ�
 				total += val;
 			}
-			// ġŲ�Ÿ��� ���� ���� M�� ���ú��� ���� ��� ����
 			min = Math.min(min, total);
 			return;
 		}
@@ -66,9 +62,9 @@ public class Q15686 {
 			String[] tmp = br.readLine().split(" ");
 			for (int j = 0; j < N; j++) {
 				map[i][j] = Integer.parseInt(tmp[j]);
-				if (map[i][j] == 1) // ��
+				if (map[i][j] == 1) 
 					house.add(new Building(i, j));
-				else if (map[i][j] == 2) // ġŲ��
+				else if (map[i][j] == 2) 
 					chicken.add(new Building(i, j));
 			}
 		}

@@ -13,6 +13,7 @@ public class Q15683 {
 	
 	static int n, m, rslt = 987654321;
 	static int[][] map, new_map;
+	
 	// 동, 남, 서, 북
 	static int[] dx = { 0, 1, 0, -1 };
 	static int[] dy = { 1, 0, -1, 0 };
